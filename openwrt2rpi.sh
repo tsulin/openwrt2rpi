@@ -415,7 +415,7 @@ case "${raspberry_model}" in
 esac
 
 [ "$openwrt_release" == "snapshot" ] && openwrt_download_dir="snapshots" || openwrt_download_dir="releases/${openwrt_release}"
-openwrt_download="https://downloads.openwrt.org/${openwrt_download_dir}/targets/brcm2708/${openwrt_subtarget}"
+openwrt_download="https://downloads.openwrt.org/${openwrt_download_dir}/targets/bcm27xx/${openwrt_subtarget}"
 openwrt_image_compr_ext=".gz"
 openwrt_image_mask="openwrt.*${openwrt_subtarget}.*\-ext4-factory.img\\${openwrt_image_compr_ext}"
 block_device_prefix="/dev/dm-"
@@ -694,7 +694,7 @@ if [ -z "$dont_generate_files" ]; then
   openwrt_version="${openwrt_version_id} ${openwrt_build_id}"
   print_var_name_value_verbose openwrt_version
 
-  sudo tar -cpf "${noobs_root_image}" -C "${root_partition_dir}" . --exclude=proc/* --exclude=sys/* --exclude=dev/pts/* || clean_and_exit "tar root image failed"
+  sudo tar -cpf "${noobs_root_image}" -C "${root_partition_dir}" --exclude=proc/* --exclude=sys/* --exclude=dev/pts/* . || clean_and_exit "tar root image failed"
   sudo chown ${USER}:${USER} "${noobs_root_image}"
   root_tar_size=$(du -m "${noobs_root_image}" | cut -f1)
   print_var_name_value_verbose root_tar_size
