@@ -1,3 +1,4 @@
+# Fork to test for openwrt 21.02.2
 # openwrt2rpi #
 Linux shell script for downloading and converting OpenWrt image to Raspberry Pi NOOBS or PINN installer format.
 
